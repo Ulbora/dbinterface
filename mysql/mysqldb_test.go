@@ -1,8 +1,8 @@
 package mysql
 
 import (
-	di "dbinterface"
 	"fmt"
+	di "github.com/Ulbora/dbinterface"
 	"strconv"
 	"testing"
 
@@ -14,7 +14,7 @@ var dbi di.Database
 var iid1 int64
 
 func TestMySQLDb_Connectfail(t *testing.T) {
-	var mdb MySQLDb
+	var mdb MyDB
 	mdb.Host = "localhost:3306"
 	mdb.User = "admin"
 	mdb.Password = "admin1"
@@ -27,7 +27,7 @@ func TestMySQLDb_Connectfail(t *testing.T) {
 
 }
 func TestMySQLDb_Connect(t *testing.T) {
-	var mdb MySQLDb
+	var mdb MyDB
 	mdb.Host = "localhost:3306"
 	mdb.User = "admin"
 	mdb.Password = "admin"

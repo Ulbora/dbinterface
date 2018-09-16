@@ -2,7 +2,7 @@ package mysql
 
 import (
 	"database/sql"
-	di "dbinterface"
+	di "github.com/Ulbora/dbinterface"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -11,8 +11,8 @@ import (
 var db *sql.DB
 var err error
 
-//MySQLDb MySQLDb
-type MySQLDb struct {
+//MyDB MyDB
+type MyDB struct {
 	Host     string
 	User     string
 	Password string
@@ -20,7 +20,7 @@ type MySQLDb struct {
 }
 
 //Connect Connect
-func (m *MySQLDb) Connect() bool {
+func (m *MyDB) Connect() bool {
 	var rtn = false
 	var conStr = m.User + ":" + m.Password + "@tcp(" + m.Host + ")/" + m.Database
 	db, err = sql.Open("mysql", conStr)
@@ -38,12 +38,12 @@ func (m *MySQLDb) Connect() bool {
 }
 
 //Test Test
-func (m *MySQLDb) Test(query string, args ...interface{}) *di.DbRow {
+func (m *MyDB) Test(query string, args ...interface{}) *di.DbRow {
 	return m.Get(query, args...)
 }
 
 //Insert Insert
-func (m *MySQLDb) Insert(query string, args ...interface{}) (bool, int64) {
+func (m *MyDB) Insert(query string, args ...interface{}) (bool, int64) {
 	var success = false
 	var id int64 = -1
 	var stmtIns *sql.Stmt
@@ -68,7 +68,7 @@ func (m *MySQLDb) Insert(query string, args ...interface{}) (bool, int64) {
 }
 
 //Update Update
-func (m *MySQLDb) Update(query string, args ...interface{}) bool {
+func (m *MyDB) Update(query string, args ...interface{}) bool {
 	var success = false
 	var stmtUp *sql.Stmt
 	stmtUp, err = db.Prepare(query)
@@ -93,7 +93,7 @@ func (m *MySQLDb) Update(query string, args ...interface{}) bool {
 }
 
 //Get Get
-func (m *MySQLDb) Get(query string, args ...interface{}) *di.DbRow {
+func (m *MyDB) Get(query string, args ...interface{}) *di.DbRow {
 	var rtn di.DbRow
 	stmtGet, err := db.Prepare(query)
 	if err != nil {
@@ -140,7 +140,7 @@ func (m *MySQLDb) Get(query string, args ...interface{}) *di.DbRow {
 }
 
 //GetList GetList
-func (m *MySQLDb) GetList(query string, args ...interface{}) *di.DbRows {
+func (m *MyDB) GetList(query string, args ...interface{}) *di.DbRows {
 	var rtn di.DbRows
 	stmtGet, err := db.Prepare(query)
 	if err != nil {
@@ -188,7 +188,7 @@ func (m *MySQLDb) GetList(query string, args ...interface{}) *di.DbRows {
 }
 
 //Delete Delete
-func (m *MySQLDb) Delete(query string, args ...interface{}) bool {
+func (m *MyDB) Delete(query string, args ...interface{}) bool {
 	var success = false
 	var stmt *sql.Stmt
 	stmt, err = db.Prepare(query)
@@ -215,7 +215,7 @@ func (m *MySQLDb) Delete(query string, args ...interface{}) bool {
 }
 
 //Close Close
-func (m *MySQLDb) Close() bool {
+func (m *MyDB) Close() bool {
 	var rtn = false
 	err := db.Close()
 	if err != nil {

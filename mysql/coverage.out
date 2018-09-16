@@ -1,12 +1,12 @@
 mode: set
-dbinterface/mysql/mysqldb.go:23.34,27.16 4 1
+dbinterface/mysql/mysqldb.go:23.31,27.16 4 1
 dbinterface/mysql/mysqldb.go:37.2,37.12 1 1
 dbinterface/mysql/mysqldb.go:27.16,29.3 1 0
 dbinterface/mysql/mysqldb.go:29.8,31.17 2 1
 dbinterface/mysql/mysqldb.go:31.17,33.4 1 1
 dbinterface/mysql/mysqldb.go:33.9,35.4 1 1
-dbinterface/mysql/mysqldb.go:41.69,43.2 1 1
-dbinterface/mysql/mysqldb.go:46.75,51.16 5 1
+dbinterface/mysql/mysqldb.go:41.66,43.2 1 1
+dbinterface/mysql/mysqldb.go:46.72,51.16 5 1
 dbinterface/mysql/mysqldb.go:67.2,67.20 1 1
 dbinterface/mysql/mysqldb.go:51.16,53.3 1 1
 dbinterface/mysql/mysqldb.go:53.8,56.17 3 1
@@ -14,7 +14,7 @@ dbinterface/mysql/mysqldb.go:56.17,58.4 1 0
 dbinterface/mysql/mysqldb.go:58.9,60.18 2 1
 dbinterface/mysql/mysqldb.go:60.18,62.5 1 0
 dbinterface/mysql/mysqldb.go:62.10,64.5 1 1
-dbinterface/mysql/mysqldb.go:71.66,75.16 4 1
+dbinterface/mysql/mysqldb.go:71.63,75.16 4 1
 dbinterface/mysql/mysqldb.go:92.2,92.16 1 1
 dbinterface/mysql/mysqldb.go:75.16,77.3 1 1
 dbinterface/mysql/mysqldb.go:77.8,80.17 3 1
@@ -22,7 +22,7 @@ dbinterface/mysql/mysqldb.go:80.17,82.4 1 0
 dbinterface/mysql/mysqldb.go:82.9,85.39 3 1
 dbinterface/mysql/mysqldb.go:85.39,87.5 1 0
 dbinterface/mysql/mysqldb.go:87.10,89.5 1 1
-dbinterface/mysql/mysqldb.go:96.68,99.16 3 1
+dbinterface/mysql/mysqldb.go:96.65,99.16 3 1
 dbinterface/mysql/mysqldb.go:139.2,139.13 1 1
 dbinterface/mysql/mysqldb.go:99.16,101.3 1 0
 dbinterface/mysql/mysqldb.go:101.8,105.17 4 1
@@ -41,7 +41,7 @@ dbinterface/mysql/mysqldb.go:130.7,130.39 1 1
 dbinterface/mysql/mysqldb.go:125.21,127.8 1 0
 dbinterface/mysql/mysqldb.go:127.13,129.8 1 1
 dbinterface/mysql/mysqldb.go:133.37,135.6 1 0
-dbinterface/mysql/mysqldb.go:143.73,146.16 3 1
+dbinterface/mysql/mysqldb.go:143.70,146.16 3 1
 dbinterface/mysql/mysqldb.go:187.2,187.13 1 1
 dbinterface/mysql/mysqldb.go:146.16,148.3 1 0
 dbinterface/mysql/mysqldb.go:148.8,152.17 4 1
@@ -61,7 +61,7 @@ dbinterface/mysql/mysqldb.go:178.6,178.48 1 1
 dbinterface/mysql/mysqldb.go:173.20,175.7 1 0
 dbinterface/mysql/mysqldb.go:175.12,177.7 1 1
 dbinterface/mysql/mysqldb.go:182.36,184.5 1 0
-dbinterface/mysql/mysqldb.go:191.66,195.16 4 1
+dbinterface/mysql/mysqldb.go:191.63,195.16 4 1
 dbinterface/mysql/mysqldb.go:214.2,214.16 1 1
 dbinterface/mysql/mysqldb.go:195.16,197.3 1 1
 dbinterface/mysql/mysqldb.go:197.8,200.17 3 1
@@ -70,7 +70,7 @@ dbinterface/mysql/mysqldb.go:202.9,204.18 2 1
 dbinterface/mysql/mysqldb.go:204.18,206.5 1 0
 dbinterface/mysql/mysqldb.go:206.10,208.25 1 1
 dbinterface/mysql/mysqldb.go:208.25,210.6 1 1
-dbinterface/mysql/mysqldb.go:218.32,221.16 3 1
+dbinterface/mysql/mysqldb.go:218.29,221.16 3 1
 dbinterface/mysql/mysqldb.go:226.2,226.12 1 1
 dbinterface/mysql/mysqldb.go:221.16,223.3 1 0
 dbinterface/mysql/mysqldb.go:223.8,225.3 1 1
