@@ -1,9 +1,5 @@
 package dbinterface
 
-import (
-//crud "github.com/Ulbora/go-crud-mysql"
-)
-
 //DbRow database row
 type DbRow struct {
 	Columns []string

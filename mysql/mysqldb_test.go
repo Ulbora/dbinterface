@@ -1,4 +1,4 @@
-package mysqldb
+package mysql
 
 import (
 	di "dbinterface"
@@ -13,6 +13,19 @@ var dbi di.Database
 
 var iid1 int64
 
+func TestMySQLDb_Connectfail(t *testing.T) {
+	var mdb MySQLDb
+	mdb.Host = "localhost:3306"
+	mdb.User = "admin"
+	mdb.Password = "admin1"
+	mdb.Database = "testdb1"
+	dbi = &mdb
+	suc := dbi.Connect()
+	if suc {
+		t.Fail()
+	}
+
+}
 func TestMySQLDb_Connect(t *testing.T) {
 	var mdb MySQLDb
 	mdb.Host = "localhost:3306"
@@ -49,6 +62,18 @@ func TestMySQLDb_Test(t *testing.T) {
 	}
 }
 
+func TestMySQLDb_Insertfail(t *testing.T) {
+	var q = "insert into test2 (name, address) values(?, ?)"
+	var a []interface{}
+	a = append(a, "test insert 1", "123 main st")
+	suc, id := dbi.Insert(q, a...)
+	if suc {
+		t.Fail()
+	} else {
+		fmt.Println("inserted id: ", id)
+	}
+}
+
 func TestMySQLDb_Insert(t *testing.T) {
 	var q = "insert into test (name, address) values(?, ?)"
 	var a []interface{}
@@ -59,6 +84,16 @@ func TestMySQLDb_Insert(t *testing.T) {
 	} else {
 		iid1 = id
 		fmt.Println("inserted id: ", id)
+	}
+}
+
+func TestMySQLDb_Updatefail(t *testing.T) {
+	var q = "update test1 set name = ? , address = ? where id = ? "
+	var a []interface{}
+	a = append(a, "test insert 2", "123456 main st", iid1)
+	suc := dbi.Update(q, a...)
+	if suc {
+		t.Fail()
 	}
 }
 
@@ -126,6 +161,16 @@ func TestMySQLDb_GetList(t *testing.T) {
 		t.Fail()
 	}
 	if !suc {
+		t.Fail()
+	}
+}
+
+func TestMySQLDb_Deletefail(t *testing.T) {
+	var q = "delete from test1 where id = ? "
+	var a []interface{}
+	a = append(a, iid1)
+	suc := dbi.Delete(q, a...)
+	if suc {
 		t.Fail()
 	}
 }

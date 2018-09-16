@@ -1,4 +1,4 @@
-package mysqldb
+package mysql
 
 import (
 	"database/sql"
@@ -25,11 +25,11 @@ func (m *MySQLDb) Connect() bool {
 	var conStr = m.User + ":" + m.Password + "@tcp(" + m.Host + ")/" + m.Database
 	db, err = sql.Open("mysql", conStr)
 	if err != nil {
-		log.Println("Error:", err.Error())
+		log.Println("Open Error:", err.Error())
 	} else {
 		err = db.Ping()
 		if err != nil {
-			log.Println("Error:", err.Error())
+			log.Println("Ping Error:", err.Error())
 		} else {
 			rtn = true
 		}
