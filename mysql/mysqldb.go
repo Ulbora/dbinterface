@@ -8,28 +8,27 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var db *sql.DB
-var err error
-
 //MyDB MyDB
 type MyDB struct {
 	Host     string
 	User     string
 	Password string
 	Database string
+	db       *sql.DB
+	err      error
 }
 
 //Connect Connect
 func (m *MyDB) Connect() bool {
 	var rtn = false
 	var conStr = m.User + ":" + m.Password + "@tcp(" + m.Host + ")/" + m.Database
-	db, err = sql.Open("mysql", conStr)
-	if err != nil {
-		log.Println("Open Error:", err.Error())
+	m.db, m.err = sql.Open("mysql", conStr)
+	if m.err != nil {
+		log.Println("Open Error:", m.err.Error())
 	} else {
-		err = db.Ping()
-		if err != nil {
-			log.Println("Ping Error:", err.Error())
+		m.err = m.db.Ping()
+		if m.err != nil {
+			log.Println("Ping Error:", m.err.Error())
 		} else {
 			rtn = true
 		}
@@ -47,9 +46,9 @@ func (m *MyDB) Insert(query string, args ...interface{}) (bool, int64) {
 	var success = false
 	var id int64 = -1
 	var stmtIns *sql.Stmt
-	stmtIns, err = db.Prepare(query)
-	if err != nil {
-		log.Println("Error:", err.Error())
+	stmtIns, m.err = m.db.Prepare(query)
+	if m.err != nil {
+		log.Println("Error:", m.err.Error())
 	} else {
 		defer stmtIns.Close()
 		res, err := stmtIns.Exec(args...)
@@ -71,9 +70,9 @@ func (m *MyDB) Insert(query string, args ...interface{}) (bool, int64) {
 func (m *MyDB) Update(query string, args ...interface{}) bool {
 	var success = false
 	var stmtUp *sql.Stmt
-	stmtUp, err = db.Prepare(query)
-	if err != nil {
-		log.Println("Error:", err.Error())
+	stmtUp, m.err = m.db.Prepare(query)
+	if m.err != nil {
+		log.Println("Error:", m.err.Error())
 	} else {
 		defer stmtUp.Close()
 		res, err := stmtUp.Exec(args...)
@@ -95,7 +94,7 @@ func (m *MyDB) Update(query string, args ...interface{}) bool {
 //Get Get
 func (m *MyDB) Get(query string, args ...interface{}) *di.DbRow {
 	var rtn di.DbRow
-	stmtGet, err := db.Prepare(query)
+	stmtGet, err := m.db.Prepare(query)
 	if err != nil {
 		log.Println("Error:", err.Error())
 	} else {
@@ -142,7 +141,7 @@ func (m *MyDB) Get(query string, args ...interface{}) *di.DbRow {
 //GetList GetList
 func (m *MyDB) GetList(query string, args ...interface{}) *di.DbRows {
 	var rtn di.DbRows
-	stmtGet, err := db.Prepare(query)
+	stmtGet, err := m.db.Prepare(query)
 	if err != nil {
 		log.Println("Error:", err.Error())
 	} else {
@@ -191,9 +190,9 @@ func (m *MyDB) GetList(query string, args ...interface{}) *di.DbRows {
 func (m *MyDB) Delete(query string, args ...interface{}) bool {
 	var success = false
 	var stmt *sql.Stmt
-	stmt, err = db.Prepare(query)
-	if err != nil {
-		log.Println("Error:", err.Error())
+	stmt, m.err = m.db.Prepare(query)
+	if m.err != nil {
+		log.Println("Error:", m.err.Error())
 	} else {
 		defer stmt.Close()
 		res, err := stmt.Exec(args...)
@@ -217,7 +216,7 @@ func (m *MyDB) Delete(query string, args ...interface{}) bool {
 //Close Close
 func (m *MyDB) Close() bool {
 	var rtn = false
-	err := db.Close()
+	err := m.db.Close()
 	if err != nil {
 		log.Println("database close error: ", err)
 	} else {

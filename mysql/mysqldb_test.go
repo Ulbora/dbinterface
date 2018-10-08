@@ -11,6 +11,8 @@ import (
 
 var dbi di.Database
 
+var dbi2 di.Database
+
 var iid1 int64
 
 func TestMySQLDb_Connectfail(t *testing.T) {
@@ -26,6 +28,7 @@ func TestMySQLDb_Connectfail(t *testing.T) {
 	}
 
 }
+
 func TestMySQLDb_Connect(t *testing.T) {
 	var mdb MyDB
 	mdb.Host = "localhost:3306"
@@ -37,7 +40,19 @@ func TestMySQLDb_Connect(t *testing.T) {
 	if !suc {
 		t.Fail()
 	}
+}
 
+func TestMySQLDb_Connect2(t *testing.T) {
+	var mdb MyDB
+	mdb.Host = "localhost:3306"
+	mdb.User = "admin"
+	mdb.Password = "admin"
+	mdb.Database = "ffl_list_10012018"
+	dbi2 = &mdb
+	suc := dbi2.Connect()
+	if !suc {
+		t.Fail()
+	}
 }
 
 func TestMySQLDb_Test(t *testing.T) {
