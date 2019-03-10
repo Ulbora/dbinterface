@@ -23,3 +23,5 @@ type Database interface {
 	Delete(query string, args ...interface{}) bool
 	Close() bool
 }
+
+//GO111MODULE=on go mod init github.com/Ulbora/dbinterface
