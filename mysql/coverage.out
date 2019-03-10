@@ -74,3 +74,11 @@ dbinterface/mysql/mysqldb.go:217.29,220.16 3 1
 dbinterface/mysql/mysqldb.go:225.2,225.12 1 1
 dbinterface/mysql/mysqldb.go:220.16,222.3 1 0
 dbinterface/mysql/mysqldb.go:222.8,224.3 1 1
+dbinterface/mysql/mysqldbMock.go:26.35,28.2 1 1
+dbinterface/mysql/mysqldbMock.go:31.70,33.2 1 1
+dbinterface/mysql/mysqldbMock.go:36.76,38.2 1 1
+dbinterface/mysql/mysqldbMock.go:41.67,43.2 1 1
+dbinterface/mysql/mysqldbMock.go:46.69,48.2 1 1
+dbinterface/mysql/mysqldbMock.go:51.74,53.2 1 1
+dbinterface/mysql/mysqldbMock.go:56.67,58.2 1 1
+dbinterface/mysql/mysqldbMock.go:61.33,63.2 1 1
